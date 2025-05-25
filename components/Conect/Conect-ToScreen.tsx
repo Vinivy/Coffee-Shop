@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import mysql from 'mysql2/promise';
 import { useNavigation } from '@react-navigation/native';
 
-const connectToDatabase = async (username: string, password: string) => {
+
+export default function LoginScreen () {
+    const connectToDatabase = async (username: string, password: string) => {
     try {
         const connection = await mysql.createConnection({
             host: 'localhost',
@@ -18,9 +20,8 @@ const connectToDatabase = async (username: string, password: string) => {
         console.error('Connection failed', error);
         return null;
     }
-};
+    };
 
-const LoginScreen = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
